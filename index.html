@@ -28,15 +28,14 @@
     arjs="sourceType: webcam;"
   >
 
-    <!-- OBJETO SIN MARCADOR -->
-    <a-text
-      value="LIMONADA CREMOSA"
-      position="0 0 -2"
-      align="center"
-      color="yellow"
-      width="4"
-      look-at="[camera]"
-    ></a-text>
+    <!-- PIKACHU -->
+    <a-entity
+      gltf-model="Pikachu.glb"
+      position="0 -0.5 -2"
+      scale="0.4 0.4 0.4"
+      rotation="0 180 0"
+      animation="property: rotation; to: 0 360 0; loop: true; dur: 6000"
+    ></a-entity>
 
     <!-- (opcional) MODELO 3D -->
     <!--
