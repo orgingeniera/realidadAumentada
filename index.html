@@ -19,7 +19,7 @@
     background:black;
     padding:6px;
   ">
-    Pikachu sin marcador
+    AR sin marcador
   </p>
 
   <a-scene
@@ -27,17 +27,26 @@
     vr-mode-ui="enabled:false"
     arjs="sourceType: webcam;"
   >
-    <!-- TU MARCADOR -->
-    <a-marker type="pattern" url="marker.patt">
-      <a-text
-        value="LIMONADA CREMOSA"
-        position="0 0.7 0"
-        look-at="[camera]"
-        align="center"
-        color="black"
-        width="2"
-      ></a-text>
-    </a-marker>
+
+    <!-- OBJETO SIN MARCADOR -->
+    <a-text
+      value="LIMONADA CREMOSA"
+      position="0 0 -2"
+      align="center"
+      color="yellow"
+      width="4"
+      look-at="[camera]"
+    ></a-text>
+
+    <!-- (opcional) MODELO 3D -->
+    <!--
+    <a-entity
+      gltf-model="Pikachu.glb"
+      position="0 -0.5 -2"
+      scale="0.4 0.4 0.4"
+      animation="property: rotation; to: 0 360 0; loop: true; dur: 6000"
+    ></a-entity>
+    -->
 
     <a-entity camera></a-entity>
 
