@@ -27,25 +27,17 @@
     vr-mode-ui="enabled:false"
     arjs="sourceType: webcam;"
   >
-
-    <!-- MODELO 3D SIEMPRE VISIBLE -->
-    <a-entity
-      gltf-model="Pikachu.glb"
-      position="0 0 -2"
-      scale="0.5 0.5 0.5"
-      rotation="0 180 0"
-      animation="property: rotation; to: 0 360 0; loop: true; dur: 6000"
-    ></a-entity>
-
-    <!-- TEXTO -->
-    <a-text
-      value="LIMONADA CREMOSA"
-      position="0 -0.5 -2"
-      align="center"
-      color="yellow"
-      width="4"
-      look-at="[camera]"
-    ></a-text>
+    <!-- TU MARCADOR -->
+    <a-marker type="pattern" url="marker.patt">
+      <a-text
+        value="LIMONADA CREMOSA"
+        position="0 0.7 0"
+        look-at="[camera]"
+        align="center"
+        color="black"
+        width="2"
+      ></a-text>
+    </a-marker>
 
     <a-entity camera></a-entity>
 
