@@ -2,82 +2,134 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Menú Pokémon AR</title>
+  <title>Menú AR - Restaurante</title>
 
+  <!-- A-Frame -->
   <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+
+  <!-- AR.js -->
   <script src="https://raw.githack.com/AR-js-org/AR.js/3.4.4/aframe/build/aframe-ar.js"></script>
 
   <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+
     #menu {
       position: fixed;
-      bottom: 20px;
+      bottom: 15px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 999;
+      background: rgba(0, 0, 0, 0.75);
+      border-radius: 18px;
+      padding: 12px;
+      width: 90%;
+      max-width: 420px;
     }
-    button {
-      padding: 10px 15px;
-      margin: 5px;
+
+    .categoria {
+      margin-bottom: 10px;
+    }
+
+    .categoria h3 {
+      margin: 5px 0;
+      color: #ffd700;
       font-size: 14px;
+      text-align: center;
+    }
+
+    .botones {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    button {
+      background: #ffffff;
+      border: none;
+      border-radius: 20px;
+      padding: 8px 14px;
+      margin: 4px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #ffd700;
     }
   </style>
 </head>
 
-<body style="margin:0; overflow:hidden;">
+<body>
 
   <!-- MENÚ -->
   <div id="menu">
-    <button onclick="mostrar('pikachu')">Pikachu</button>
-    <button onclick="mostrar('charmander')">Charmander</button>
-    <button onclick="mostrar('bulbasaur')">Bulbasaur</button>
+
+    <div class="categoria">
+      <h3>🍹 Jugos</h3>
+      <div class="botones">
+        <button onclick="mostrarTexto('Limonada Cremosa')">Limonada</button>
+        <button onclick="mostrarTexto('Jugo de Mango')">Mango</button>
+      </div>
+    </div>
+
+    <div class="categoria">
+      <h3>🍔 Comidas rápidas</h3>
+      <div class="botones">
+        <button onclick="mostrarTexto('Hamburguesa Especial')">Hamburguesa</button>
+        <button onclick="mostrarTexto('Perro Caliente')">Perro</button>
+      </div>
+    </div>
+
+    <div class="categoria">
+      <h3>🥗 Entradas</h3>
+      <div class="botones">
+        <button onclick="mostrarTexto('Empanadas')">Empanadas</button>
+        <button onclick="mostrarTexto('Patacones')">Patacones</button>
+      </div>
+    </div>
+
+    <div class="categoria">
+      <h3>🥩 Asados</h3>
+      <div class="botones">
+        <button onclick="mostrarTexto('Carne Asada')">Carne</button>
+        <button onclick="mostrarTexto('Churrasco')">Churrasco</button>
+      </div>
+    </div>
+
   </div>
 
-  <a-scene embedded vr-mode-ui="enabled:false" arjs="sourceType: webcam;">
+  <!-- ESCENA AR -->
+  <a-scene
+    embedded
+    vr-mode-ui="enabled:false"
+    arjs="sourceType: webcam;"
+  >
 
-    <!-- PIKACHU -->
-    <a-entity
-      id="pikachu"
-      gltf-model="Pikachu.glb"
+    <!-- TEXTO EN REALIDAD AUMENTADA -->
+    <a-text
+      id="textoAR"
+      value="Selecciona un producto"
       position="0 0 -1.5"
-      scale="0.8 0.8 0.8"
-      visible="false"
-      animation="property: rotation; to: 0 360 0; loop: true; dur: 6000"
-    ></a-entity>
-
-    <!-- CHARMANDER -->
-    <a-entity
-      id="charmander"
-      gltf-model="charmander.glb"
-      position="0 0 -1.5"
-      scale="0.8 0.8 0.8"
-      visible="false"
-      animation="property: rotation; to: 0 360 0; loop: true; dur: 6000"
-
-    ></a-entity>
-
-    <!-- BULBASAUR -->
-    <a-entity
-      id="bulbasaur"
-      gltf-model="bulbasaur.glb"
-      position="0 0 -1.5"
-      scale="0.8 0.8 0.8"
-      visible="false"
-      animation="property: rotation; to: 0 360 0; loop: true; dur: 6000"
-
-    ></a-entity>
+      align="center"
+      color="black"
+      width="3"
+      look-at="[camera]"
+    ></a-text>
 
     <a-entity camera></a-entity>
+
   </a-scene>
 
+  <!-- JS -->
   <script>
-    function mostrar(nombre) {
-      // ocultar todos
-      document.querySelector('#pikachu').setAttribute('visible', false);
-      document.querySelector('#charmander').setAttribute('visible', false);
-      document.querySelector('#bulbasaur').setAttribute('visible', false);
-
-      // mostrar el seleccionado
-      document.querySelector('#' + nombre).setAttribute('visible', true);
+    function mostrarTexto(texto) {
+      document
+        .querySelector('#textoAR')
+        .setAttribute('value', texto);
     }
   </script>
 
